@@ -1,4 +1,4 @@
-package cn.com.hth.extends1.dto;
+package cn.com.hth.interface1.dto;
 
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -9,13 +9,12 @@ import java.util.Objects;
  *
  * @author Dhcc.Hantonghao
  * @version 1.0
- * @date 2021/1/4 21:26
+ * @date 2021/1/7 21:47
  */
-public class Employee {
+public class Employee implements Comparable<Employee>{
     private String name;
     private double salary;
     private Date hireDay;
-    public Double ss;
 
     public Employee(String name, double salary, int year, int month, int day) {
         this.name = name;
@@ -61,21 +60,11 @@ public class Employee {
         return "Employee";
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Employee employee = (Employee) o;
-        return Double.compare(employee.salary, salary) == 0 &&
-                Objects.equals(name, employee.name) &&
-                Objects.equals(hireDay, employee.hireDay);
-    }
+
+
 
     @Override
-    public int hashCode() {
-//        int s = 7*Objects.hashCode(name)+11*new
-//        super.getClass();
-//        Class<?> superclass = getClass().getSuperclass();
-        return Objects.hash(name, salary, hireDay);
+    public int compareTo(Employee o) {
+        return Double.compare(salary,o.getSalary());
     }
 }
